@@ -11,7 +11,7 @@ import magic from '../../public/magic.png'
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-16">
         <div className="flex gap-4">
             <Card src={daisy} alt="daisy" width={50} height={50} title= "daisy UI" content="daisy UI" buttonContent="Learn" />
             <Card src={deeeee} alt="deeeee" width={50} height={50} title= "deepseek" content="deepseek" buttonContent="Learn" />
