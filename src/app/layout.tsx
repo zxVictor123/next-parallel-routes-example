@@ -7,14 +7,19 @@ export const metadata: Metadata = {
 }
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body>
         <div className="w-screen h-screen flex justify-center items-center">
-          <AntdRegistry>{children}</AntdRegistry>
+          <AntdRegistry>
+            {children}
+            {modal}
+          </AntdRegistry>
         </div>
       </body>
     </html>
