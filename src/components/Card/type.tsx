@@ -8,4 +8,5 @@ export interface CardProps {
     title: string;
     content: string;
     buttonContent: string;
+    id: number;
 }

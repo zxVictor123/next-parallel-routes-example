@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { CardProps } from "./type";
+import Link from "next/link";
 
 function Card(props: CardProps) {
   return (
@@ -17,7 +18,7 @@ function Card(props: CardProps) {
         <h2 className="card-title">{props.title}</h2>
         <p>{props.content}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">{props.buttonContent}</button>
+          <Link href={`/photos/${props.id}`}><button className="btn btn-primary">{props.buttonContent}</button></Link>
         </div>
       </div>
     </div>
