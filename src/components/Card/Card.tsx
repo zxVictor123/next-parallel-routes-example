@@ -4,7 +4,7 @@ import { CardProps } from "./type";
 
 function Card(props: CardProps) {
   return (
-    <div className="card bg-base-100 w-60 shadow-sm">
+    <div className="card bg-base-100 shadow-sm">
       <figure>
         <Image
           src={props.src}
