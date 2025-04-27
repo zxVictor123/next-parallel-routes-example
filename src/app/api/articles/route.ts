@@ -10,12 +10,18 @@ export async function POST(request:Request) {
         }))
         return NextResponse.json(
             {
-                code: 0,
+                code: 200,
                 message: '添加成功',
                 data
             }
         )
     }catch (error) {
-        console.log('请求失败',error)
+        console.log('添加失败',error)
+        return NextResponse.json(
+            {
+                code: 400,
+                message: '添加失败',
+            }
+        )
     }
 }
