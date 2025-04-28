@@ -1,10 +1,19 @@
+'use client'
 import React from "react";
 import { PhotoParams } from "./type";
 import { card } from "@/data/card";
 import Image from "next/image";
 
-function photos({ params }: { params: PhotoParams }) {
-  const cardObject = card.find((item) => item.id === +params.id)!;
+/**
+ * 照片详情页面组件
+ * @param {Object} props - 组件属性
+ * @param {Promise<PhotoParams>} props.params - 路由参数
+ * @returns {JSX.Element} 照片详情页面组件
+ */
+async function Photos({ params }: { params: Promise<PhotoParams> }) {
+  const resolvedParams = await params;
+  const cardObject = card.find((item) => item.id === parseInt(resolvedParams.id))!;
+  
   return (
     <div className="container mx-auto px-6">
       <div>
@@ -33,4 +42,4 @@ function photos({ params }: { params: PhotoParams }) {
   );
 }
 
-export default photos;
+export default Photos;

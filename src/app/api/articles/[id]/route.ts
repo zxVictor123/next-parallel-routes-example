@@ -7,10 +7,11 @@ import db from "@/db"
 
 
 // 删除逻辑
-export async function DELETE(request:Request,{params}: {params: Params}) {
+export async function DELETE(request:Request,{params}: {params: Promise<Params>}) {
     try {
+        const resolvedParams = await params
         await db.update(({posts}) => {
-            const idx = posts.findIndex(item => item.id === params.id)
+            const idx = posts.findIndex(item => String(item.id) === resolvedParams.id)
             posts.splice(idx,1)
         })
         return NextResponse.json(
@@ -30,11 +31,12 @@ export async function DELETE(request:Request,{params}: {params: Params}) {
     }
 }
 // 修改逻辑
-export async function PATCH(request: Request,{params}:{params: Params}) {
+export async function PATCH(request: Request,{params}:{params: Promise<Params>}) {
     try {
+        const resolvedParams = await params
         const data = await request.json()
         await db.update (({posts}) => {
-            const idx = posts.findIndex(item => item.id === params.id)
+            const idx = posts.findIndex(item => String(item.id) === resolvedParams.id)
             posts[idx] = {...posts[idx],...data}
         })
         return NextResponse.json(
@@ -54,9 +56,10 @@ export async function PATCH(request: Request,{params}:{params: Params}) {
     }
 }
 // 查找逻辑
-export async function GET(request: Request,{params}: {params: Params}) {
+export async function GET(request: Request,{params}: {params: Promise<Params>}) {
     try {
-        const post = db.data.posts.find(item => item.id === params.id)
+        const resolvedParams = await params
+        const post = db.data.posts.find(item => String(item.id) === resolvedParams.id)
         return NextResponse.json(
             {
                 code: 200,
