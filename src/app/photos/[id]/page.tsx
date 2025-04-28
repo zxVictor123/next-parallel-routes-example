@@ -1,4 +1,3 @@
-'use client'
 import React from "react";
 import { PhotoParams } from "./type";
 import { card } from "@/data/card";
